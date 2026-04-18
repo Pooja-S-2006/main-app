@@ -1,0 +1,3 @@
+[submodule "auth-module"]
+	path = auth-module
+	url = https://github.com/Pooja-S-2006/auth-module-auth
