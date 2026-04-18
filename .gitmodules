@@ -1,3 +1,12 @@
 [submodule "auth-module"]
 	path = auth-module
 	url = https://github.com/Pooja-S-2006/auth-module-auth
+[submodule "cart-module"]
+	path = cart-module
+	url = https://github.com/Pooja-S-2006/cart-module
+[submodule "ui-components"]
+	path = ui-components
+	url = https://github.com/Pooja-S-2006/ui-components
+[submodule "product-module"]
+	path = product-module
+	url = https://github.com/Pooja-S-2006/product-module
