@@ -9,11 +9,17 @@
     "preview": "vite preview",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": ["react", "ecommerce", "vite", "modular"],
+  "keywords": [
+    "react",
+    "ecommerce",
+    "vite",
+    "modular"
+  ],
   "author": "",
   "license": "ISC",
   "description": "Main e-commerce application with modular architecture",
   "dependencies": {
+    "@tailwindcss/postcss": "^4.2.2",
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
     "@vitejs/plugin-react": "^6.0.1",
