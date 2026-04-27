@@ -11,30 +11,26 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # Step 1: Basic Checkout 
-      # We do a basic checkout first to fix any configuration issues manually if needed
       - name: Checkout Repository
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
-      # Step 2: Fix Submodule Config
-      # This cleans up the error you saw by syncing the URL paths properly
-      - name: Sync and Initialize Submodules
+      - name: Force Fix and Sync Submodules
         run: |
+          # This line removes the 'ghost' reference that is causing the crash
+          git rm --cached auth-module-auth || true
+          
+          # Now sync and update the submodules that actually exist
           git submodule sync --recursive
           git submodule update --init --recursive --force
 
-      # Step 3: Verify Submodule Status
-      # This lists your submodules to prove they are integrated (Requirement: Documentation)
       - name: Check Submodule Status
         run: |
           echo "Current Submodule Integration:"
           git submodule status
 
-      # Step 4: Validate Deliverables
-      # Confirms that the files from the external repository are actually present
       - name: Verify Submodule Content
         run: |
-          echo "Listing repository structure to confirm submodule integration:"
+          echo "Listing repository structure:"
           ls -R
