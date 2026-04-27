@@ -1,0 +1,37 @@
+name: Submodule Integration Check
+
+# Trigger the workflow on every push or pull request to the main branch
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  check-submodules:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Checkout the repository
+      # The 'submodules: recursive' part is the most important for your problem statement
+      - name: Checkout Repository with Submodules
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+          fetch-depth: 0
+
+      # Step 2: Verify the submodule status
+      - name: Check Submodule Status
+        run: |
+          echo "Checking submodule status..."
+          git submodule status
+
+      # Step 3: Attempt to update submodules to ensure synchronization
+      - name: Update and Sync Submodules
+        run: |
+          git submodule update --init --recursive
+          echo "Submodules are synchronized and ready."
+
+      # Step 4: Simple build/check (Optional: change this to fit your project)
+      - name: List files to confirm submodule content
+        run: ls -R
